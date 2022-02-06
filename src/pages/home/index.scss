@@ -13,8 +13,8 @@
   position: absolute;
   top: 0;
   right: 0;
-  bottom: 0;
   left: 0;
+  height: 100vh;
   opacity: 0.8;
   background-size: cover;
 
@@ -36,6 +36,22 @@
   }
 }
 
+@media (min-width: 760px) {
+  .home-container {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
 .home-container {
   margin-top: 100vh;
+
+  .page-list-container {
+    padding: 10px;
+  }
+
+  .author-profile {
+    padding: 10px;
+  }
 }

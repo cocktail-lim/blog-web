@@ -21,6 +21,8 @@
   },
   "devDependencies": {
     "@ant-design/icons": "^4.7.0",
+    "@types/lodash": "^4.14.178",
+    "@types/markdown-it": "^12.2.3",
     "@types/react": "^17.0.33",
     "@types/react-dom": "^17.0.10",
     "@typescript-eslint/eslint-plugin": "^5.10.2",
@@ -33,6 +35,8 @@
     "eslint-plugin-react": "^7.28.0",
     "husky": "^7.0.4",
     "lint-staged": "^12.3.3",
+    "lodash": "^4.17.21",
+    "markdown-it": "^12.3.2",
     "prettier": "^2.5.1",
     "stylelint": "^14.3.0",
     "typescript": "^4.5.5",
