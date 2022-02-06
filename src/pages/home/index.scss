@@ -1,0 +1,41 @@
+@keyframes scrollwave {
+  from {
+    bottom: 40px;
+    opacity: 1;
+  }
+
+  to {
+    bottom: 10px;
+    opacity: 0.3;
+  }
+}
+.home-banner {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 0.8;
+  background-size: cover;
+
+  .scroll-box {
+    position: absolute;
+    animation-duration: 1s;
+    animation-name: scrollwave;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    transition: visibility 1s cubic-bezier(.17,.67,.83,.67);
+    left: 50%;
+    transform: translateX(-50%);
+
+    .down-icon {
+      color: #ffffff;
+      font-weight: bold;
+      font-size: 20px;
+    }
+  }
+}
+
+.home-container {
+  margin-top: 100vh;
+}
