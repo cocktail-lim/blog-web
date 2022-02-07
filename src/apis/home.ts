@@ -10,10 +10,16 @@ export interface PageItemObject {
 
 export type PageListObject = PageItemObject[];
 
-export interface HomeResponse {
+export interface PageListResponse {
   articleCount: number;
   categoryCount: number;
   tagCount: number;
   viewsCount: string;
   pageList: PageListObject;
 }
+
+export const pageListRequest: RequestFunc<never, PageListResponse> = (
+  config: RequestConfig<never>
+): Promise<PageListResponse> => {
+  return request(config);
+};
