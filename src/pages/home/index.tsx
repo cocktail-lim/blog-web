@@ -1,13 +1,10 @@
 import React, { useState, useCallback, Fragment, useEffect } from 'react';
 import { DownOutlined } from '@ant-design/icons';
-import { Row, Col, message } from 'antd';
-import { useAppDispatch } from '@/hooks/redux';
-import { updatePageList } from '@/store/actions/home';
+import { Row, Col } from 'antd';
+
 import ArticleList from '@/components/articleList';
-import { pageListRequest, PageListParams } from '@/apis/article';
-import { RequestConfig } from '@/utils/commonTypes';
+
 import './index.scss';
-import { RequestError } from '@/utils/request';
 
 const initialBannerState: React.CSSProperties = {
   backgroundImage:
@@ -15,30 +12,7 @@ const initialBannerState: React.CSSProperties = {
 };
 const Home: React.FC = () => {
   const [bannerStyle, setBannerStyle] = useState<React.CSSProperties>(initialBannerState);
-  const [current, setCurrent] = useState<number>(1);
-  const dispatch = useAppDispatch();
-  const getPageList = useCallback(async () => {
-    const config: RequestConfig<PageListParams> = {
-      api: '/api/article/listArticlePreviewPage',
-      method: 'get',
-      params: {
-        current,
-        size: 10,
-      },
-    };
-    try {
-      const response = await pageListRequest(config);
-      const { articleList } = response;
-      dispatch(updatePageList(articleList));
-    } catch (e) {
-      const err: RequestError = e as RequestError;
-      message.error(err.message);
-    }
-  }, [current]);
 
-  useEffect(() => {
-    getPageList();
-  }, [current]);
   return (
     <Fragment>
       <div className='home-banner' style={bannerStyle}>

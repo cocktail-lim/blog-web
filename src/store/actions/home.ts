@@ -1,4 +1,4 @@
-import { GET_PAGE_LIST } from '@/store/types/home';
+import { GET_PAGE_LIST, UPDATE_CURRENT, UPDATE_CURRENT_BASIC } from '@/store/types/home';
 
 export interface TagItem {
   tagId: number;
@@ -24,3 +24,19 @@ export const updatePageList = (pageList: PageList) => {
     pageList,
   };
 };
+
+export const updateCurrent = (current?: number) => {
+  if (!current) {
+    return {
+      type: UPDATE_CURRENT_BASIC,
+    };
+  }
+  return {
+    type: UPDATE_CURRENT,
+    current,
+  };
+};
+
+// export const updateCurrentBasic = () => {
+
+// };
