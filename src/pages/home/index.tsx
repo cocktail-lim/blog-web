@@ -13,6 +13,8 @@ const initialBannerState: React.CSSProperties = {
 const Home: React.FC = () => {
   const [bannerStyle, setBannerStyle] = useState<React.CSSProperties>(initialBannerState);
 
+  useEffect(() => {});
+
   return (
     <Fragment>
       <div className='home-banner' style={bannerStyle}>
@@ -23,7 +25,7 @@ const Home: React.FC = () => {
       <div className='home-container'>
         <Row>
           <Col span={16}>
-            <div className='page-list-container'>
+            <div className='article-list-container'>
               <ArticleList />
             </div>
           </Col>

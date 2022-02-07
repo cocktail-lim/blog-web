@@ -1,11 +1,11 @@
-import { GET_PAGE_LIST, UPDATE_CURRENT, UPDATE_CURRENT_BASIC } from '@/store/types/home';
+import { GET_ARTICLE_LIST, UPDATE_CURRENT, UPDATE_CURRENT_BASIC } from '@/store/types/home';
 
 export interface TagItem {
   tagId: number;
   tagName: string;
 }
 
-export interface PageItem {
+export interface ArticleItem {
   id: number;
   articleTitle: string;
   articleCover: string;
@@ -16,12 +16,12 @@ export interface PageItem {
   articlePreviewContent: string;
 }
 
-export type PageList = PageItem[];
+export type ArticleListType = ArticleItem[];
 
-export const updatePageList = (pageList: PageList) => {
+export const updateArticleList = (articleList: ArticleListType) => {
   return {
-    type: GET_PAGE_LIST,
-    pageList,
+    type: GET_ARTICLE_LIST,
+    articleList,
   };
 };
 
@@ -36,7 +36,3 @@ export const updateCurrent = (current?: number) => {
     current,
   };
 };
-
-// export const updateCurrentBasic = () => {
-
-// };

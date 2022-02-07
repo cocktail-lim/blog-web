@@ -1,10 +1,10 @@
-import { GET_PAGE_LIST, UPDATE_CURRENT, UPDATE_CURRENT_BASIC } from '@/store/types/home';
-import { PageList } from '@/store/actions/home';
-import { unionBy, differenceBy } from 'lodash';
+import { GET_ARTICLE_LIST, UPDATE_CURRENT, UPDATE_CURRENT_BASIC } from '@/store/types/home';
+import { ArticleListType } from '@/store/actions/home';
+import { differenceBy } from 'lodash';
 
-interface PageListAction {
+interface ArticleListAction {
   type: string;
-  pageList: PageList;
+  articleList: ArticleListType;
 }
 
 interface CurrentAction {
@@ -12,13 +12,17 @@ interface CurrentAction {
   current?: number;
 }
 
-const initialPageListState: PageList = [];
+const initialArticleListState: ArticleListType = [];
 
-export const pageList = (state: PageList = initialPageListState, action: PageListAction) => {
-  const newPages = state.length < 1 ? action.pageList : differenceBy(action.pageList, state, 'id');
+export const articleList = (
+  state: ArticleListType = initialArticleListState,
+  action: ArticleListAction
+) => {
+  const newArticles =
+    state.length < 1 ? action.articleList : differenceBy(action.articleList, state, 'id');
   switch (action.type) {
-    case GET_PAGE_LIST:
-      return Array.prototype.concat(state, newPages);
+    case GET_ARTICLE_LIST:
+      return Array.prototype.concat(state, newArticles);
     default:
       return state;
   }

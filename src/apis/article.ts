@@ -1,19 +1,19 @@
 import request from '@/utils/request';
 import { RequestFunc, RequestConfig } from '@/utils/commonTypes';
-import { PageList } from '@/store/actions/home';
+import { ArticleListType } from '@/store/actions/home';
 
-export interface PageListParams {
+export interface ArticleListParams {
   current: number;
   size: number;
 }
 
-export interface PageListResponse {
-  articleList: PageList;
+export interface ArticleListResponse {
+  articleList: ArticleListType;
   total: number;
 }
 
-export const pageListRequest: RequestFunc<PageListParams, PageListResponse> = (
-  config: RequestConfig<PageListParams>
-): Promise<PageListResponse> => {
+export const articleListRequest: RequestFunc<ArticleListParams, ArticleListResponse> = (
+  config: RequestConfig<ArticleListParams>
+): Promise<ArticleListResponse> => {
   return request(config);
 };

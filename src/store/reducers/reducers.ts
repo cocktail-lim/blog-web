@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
-import { pageList, homeCurrent } from './home';
+import { articleList, homeCurrent } from './home';
 
 export default function createReducer() {
   return combineReducers({
-    pageList,
+    articleList,
     homeCurrent,
   });
 }
