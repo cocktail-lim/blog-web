@@ -1,0 +1,103 @@
+@keyframes headereffect {
+  from {
+    opacity: 0;
+    filter: alpha(opacity=0);
+    transform: translateY(-50px);
+  }
+
+  to {
+    opacity: 1;
+    filter: none;
+    transform: translateY(0);
+  }
+}
+
+@keyframes contenteffect {
+  from {
+    opacity: 0;
+    filter: alpha(opacity=0);
+    transform: translateY(50px);
+  }
+
+  to {
+    opacity: 1;
+    filter: none;
+    transform: translateY(0);
+  }
+}
+
+.article-main {
+  .article-header {
+    height: 400px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    animation: headereffect 1s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #eeeeee;
+
+    .article-header-info {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+  
+      .article-title {
+        font-size: 35px;
+        margin: 40px 0 10px 0;
+        font-weight: normal;
+      }
+  
+      .article-info-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 400px;
+      }
+      .article-info-item {
+        display: flex;
+        align-items: center;
+        position: relative;
+        font-size: 14px;
+        .anticon {
+          margin-right: 5px;
+        }
+  
+        &::after {
+          content: '';
+          border-right: 1px solid rgba(255,255,255,0.6);
+          height: 20px;
+          width: 10px;
+          position: absolute;
+          right: -10px;
+          top: 50%;
+          transform: translateY(-50%);
+        }
+  
+        &:last-child::after {
+          content: none;
+        }
+      }
+    }
+  }
+
+
+  .article-container {
+    margin: 30px auto 0 auto;
+    max-width: 1200px;
+    animation: contenteffect 1s;
+
+    .article-content {
+      padding: 50px 40px;
+      box-shadow: 0 4px 8px 6px rgb(7 17 27 / 6%);
+      border-radius: 8px;
+      background-color: #ffffff;
+
+      .reader-container {
+        min-height: calc(100vh - 430px);
+      }
+    }
+  }
+}
