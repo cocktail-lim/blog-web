@@ -1,19 +1,52 @@
 import React, { useState, useCallback, Fragment, useEffect } from 'react';
 import { DownOutlined } from '@ant-design/icons';
-import { Row, Col } from 'antd';
-
+import { Row, Col, message } from 'antd';
+import { pageListRequest, PageListResponse } from '@/apis/home';
 import ArticleList from '@/components/articleList';
-
+import { RequestConfig } from '@/utils/commonTypes';
+import { RequestError } from '@/utils/request';
+import { useAppDispatch, useAppSelector } from '@/hooks/redux';
+import { createSelector } from 'reselect';
+import { PageListObject, updatePageList } from '@/store/actions/pages';
 import './index.scss';
+import { RootState } from '@/store/store';
+import { find } from 'lodash';
 
 const initialBannerState: React.CSSProperties = {
-  backgroundImage:
-    'url(https://myblog-1307358696.cos.ap-hongkong.myqcloud.com/%E5%8D%9A%E5%AE%A2%E5%B0%81%E9%9D%A2%E5%9B%BE/759fd1c9ef419fcd72618424d5d680b2.jpg)',
+  backgroundImage: 'url()',
 };
 const Home: React.FC = () => {
   const [bannerStyle, setBannerStyle] = useState<React.CSSProperties>(initialBannerState);
+  const dispatch = useAppDispatch();
+  const homePage = useAppSelector(
+    createSelector(
+      (state: RootState) => state.pageList,
+      (pageList: PageListObject) => find(pageList, (item) => item.pageId === 1)
+    )
+  );
 
-  useEffect(() => {});
+  useEffect(() => {
+    async function getPageList() {
+      const config: RequestConfig<never> = {
+        api: '/api/home',
+        method: 'get',
+      };
+      try {
+        const response: PageListResponse = await pageListRequest(config);
+        const { homeInfo } = response;
+        const { pageList } = homeInfo;
+        dispatch(updatePageList(pageList));
+      } catch (e) {
+        const err: RequestError = e as RequestError;
+        message.error(err.message);
+      }
+    }
+    getPageList();
+  }, []);
+
+  useEffect(() => {
+    setBannerStyle({ backgroundImage: `url(${homePage?.pageCover})` });
+  }, [homePage]);
 
   return (
     <Fragment>
