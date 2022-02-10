@@ -2,6 +2,8 @@ import React, { useState, Fragment, useEffect } from 'react';
 import { DownOutlined } from '@ant-design/icons';
 import { Row, Col } from 'antd';
 import ArticleList from '@/components/articleList';
+import ProfileCard from '@/components/profileCard';
+import CommonCard from '@/components/commonCard';
 import { useAppSelector } from '@/hooks/redux';
 import { createSelector } from 'reselect';
 import { PageListObject } from '@/store/actions/pages';
@@ -33,13 +35,17 @@ const Home: React.FC = () => {
       </div>
       <div className='home-container'>
         <Row>
-          <Col span={16}>
+          <Col span={18}>
             <div className='article-list-container'>
               <ArticleList />
             </div>
           </Col>
-          <Col span={8}>
-            <div className='author-profile'></div>
+          <Col span={6}>
+            <div className='side-bar-container'>
+              <CommonCard>
+                <ProfileCard />
+              </CommonCard>
+            </div>
           </Col>
         </Row>
       </div>
