@@ -45,7 +45,7 @@
 }
 
 .home-container {
-  margin-top: 100vh;
+  margin-top: calc(100vh + 30px);
 
   .page-list-container {
     padding: 10px;
