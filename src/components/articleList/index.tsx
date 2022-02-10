@@ -42,7 +42,7 @@ const ArticleList: React.FC = () => {
       method: 'get',
       params: {
         current: homeCurrent,
-        size: 2,
+        size: 10,
       },
     };
     try {
